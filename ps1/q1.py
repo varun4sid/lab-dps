@@ -4,7 +4,9 @@ from functions import (
     multiplicative_cipher_encrypt,
     multiplicative_cipher_decrypt,
     affine_cipher_encrypt,
-    affine_cipher_decrypt
+    affine_cipher_decrypt,
+    autokey_cipher_encrypt,
+    autokey_cipher_decrypt
 )
 
 text = "this is an exercise"
@@ -17,6 +19,9 @@ mcd = multiplicative_cipher_decrypt(mce, 15)
 affce = affine_cipher_encrypt(text, 15, 20)
 affcd = affine_cipher_decrypt(affce, 15, 20)
 
+autoce = autokey_cipher_encrypt(text, 7)
+autocd = autokey_cipher_decrypt(autoce, 7)
+
 print("Additive Cipher")
 print(f"Encrypt({text}) = ", ace)
 print(f"Decrypt({ace}) = ", acd)
@@ -28,3 +33,7 @@ print(f"Decrypt({mce}) = ", mcd)
 print("Affine Cipher")
 print(f"Encrypt({text}) = ", affce)
 print(f"Decrypt({affce}) = ", affcd)
+
+print("Autokey Cipher")
+print(f"Encrypt({text}) = ", autoce)
+print(f"Decrypt({autoce}) = ", autocd)

@@ -7,7 +7,7 @@ def additive_cipher_encrypt(text, key):
     
     for ch in text.lower():
         character = ord(ch)
-        if character >= a and character <= z:
+        if a <= character <= z:
             index = a + (character + key - a) % 26
             encrypted += chr(index)
         else:
@@ -21,7 +21,7 @@ def additive_cipher_decrypt(text, key):
     
     for ch in text:
         character = ord(ch)
-        if character >= a and character <= z:
+        if a <= character <= z:
             index = a + (character - key - a) % 26
             decrypted += chr(index)
         else:
@@ -38,7 +38,7 @@ def multiplicative_cipher_encrypt(text, key):
     
     for ch in text.lower():
         character = ord(ch)
-        if character >= a and character <= z:
+        if a <= character <= z:
             index = a + ((character - a) * key) % 26
             encrypted += chr(index)
         else:
@@ -64,7 +64,7 @@ def multiplicative_cipher_decrypt(text, key):
     
     for ch in text:
         character = ord(ch)
-        if character >= a and character <= z:
+        if a <= character <= z:
             index = a + ((character - a) * inverse_key) % 26
             decrypted += chr(index)
         else:
@@ -78,7 +78,7 @@ def affine_cipher_encrypt(text, k1, k2):
     
     for ch in text.lower():
         character = ord(ch)
-        if character >= a and character <= z:
+        if a <= character <= z:
             index = a + ((character - a) * k1 + k2) % 26
             encrypted += chr(index)
         else:
@@ -97,9 +97,39 @@ def affine_cipher_decrypt(text, k1, k2):
     
     for ch in text:
         character = ord(ch)
-        if character >= a and character <= z:
+        if a <= character <= z:
             index = a + (((character - k2 - a) * k1_inverse) % 26)
             decrypted += chr(index)
+        else:
+            decrypted += ch
+            
+    return decrypted
+
+
+def autokey_cipher_encrypt(text, key):
+    encrypted = ""
+    
+    for ch in text.lower():
+        character = ord(ch)
+        if a <= character <= z:
+            index = a + (character + key - a) % 26
+            encrypted += chr(index)
+            key = ord(ch) - a
+        else:
+            encrypted += ch
+            
+    return encrypted
+
+
+def autokey_cipher_decrypt(text, key):
+    decrypted = ""
+    
+    for ch in text.lower():
+        character = ord(ch)
+        if a <= character <= z:
+            index = a + (character - key - a) % 26
+            decrypted += chr(index)
+            key = ord(decrypted[-1]) - a
         else:
             decrypted += ch
             
