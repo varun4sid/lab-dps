@@ -1,4 +1,4 @@
-from functions import (
+from ps1.scfunctions import (
     additive_cipher_encrypt,
     additive_cipher_decrypt,
     multiplicative_cipher_encrypt,
