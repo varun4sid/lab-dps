@@ -81,7 +81,7 @@ def affine_cipher_encrypt(text, k1, k2):
     for ch in text.lower():
         character = ord(ch)
         if a <= character <= z:
-            functionsindex = a + ((character - a) * k1 + k2) % 26
+            index = a + ((character - a) * k1 + k2) % 26
             encrypted += chr(index)
         else:
             encrypted += ch
