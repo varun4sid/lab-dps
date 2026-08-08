@@ -1,8 +1,9 @@
-from tcfunctions import transposition_encrypt
+from tcfunctions import transposition_decrypt, transposition_encrypt, get_encryption_key
 
-key = "nick"
-plaintext = "Krishna Ranjan"
+key = get_encryption_key("nick")
+plaintext = "enemyattackstonight"
 ciphertext = transposition_encrypt(plaintext, key)
 
 print(f"Plaintext: {plaintext}")
 print(f"Ciphertext: {ciphertext}")
+print(f"Decrypted: {transposition_decrypt(ciphertext, key)}")
