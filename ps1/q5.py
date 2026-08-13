@@ -1,9 +1,9 @@
-from tcfunctions import transposition_decrypt, transposition_encrypt, get_encryption_key
+from tcfunctions import double_transposition_encrypt, get_encryption_key
 
-key = get_encryption_key("nick")
+key1 = get_encryption_key("nick")
+key2 = get_encryption_key("boat")
 plaintext = "enemyattackstonight"
-ciphertext = transposition_encrypt(plaintext, key)
+ciphertext = double_transposition_encrypt(plaintext, key1, key2)
 
 print(f"Plaintext: {plaintext}")
 print(f"Ciphertext: {ciphertext}")
-print(f"Decrypted: {transposition_decrypt(ciphertext, key)}")

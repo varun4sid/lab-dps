@@ -56,3 +56,11 @@ def transposition_decrypt(ciphertext:str, key:str):
         plaintext += row
 
     return ''.join(plaintext).replace("_", " ")
+
+
+def double_transposition_encrypt(plaintext:str, key1:str, key2:str):
+    first_encryption = transposition_encrypt(plaintext, key1)
+    second_plaintext = ''.join(first_encryption.split("_"))
+    second_encryption = transposition_encrypt(second_plaintext, key2)
+    return ''.join(second_encryption.split("_"))
+
